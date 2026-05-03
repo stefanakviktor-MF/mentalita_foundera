@@ -33,6 +33,18 @@ export interface Person {
   city?: string
   quote?: string
   stats?: { value: string; label: string }[]
+
+  // Hero section editable text
+  heroBadge?: string
+  heroSubheadline?: string
+  heroAwardTitle?: string
+  heroAwardSubtitle?: string
+
+  // Podcast platform URLs
+  spotifyUrl?: string
+  applePodcastsUrl?: string
+  youtubeUrl?: string
+  tiktokUrl?: string
 }
 
 export interface Achievement {

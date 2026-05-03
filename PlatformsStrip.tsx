@@ -1,17 +1,40 @@
-const platforms = [
-  { label: 'Spotify',        href: '#', icon: <SpotifyIcon /> },
-  { label: 'Apple Podcasts', href: '#', icon: <AppleIcon /> },
-  { label: 'YouTube',        href: '#', icon: <YouTubeIcon /> },
-  { label: 'TikTok',         href: '#', icon: <TikTokIcon /> },
-]
+import type { Person } from '@/types'
 
-export function PlatformsStrip() {
+interface Props {
+  person?: Person
+}
+
+export function PlatformsStrip({ person }: Props = {}) {
+  // CMS-editable URLs with safe fallbacks
+  const platforms = [
+    {
+      label: 'Spotify',
+      href: person?.spotifyUrl ?? 'https://open.spotify.com/show/1gYhBNZAb52lnmviSm1Lf4',
+      icon: <SpotifyIcon />,
+    },
+    {
+      label: 'Apple Podcasts',
+      href: person?.applePodcastsUrl ?? 'https://podcasts.apple.com/sk/podcast/mentalita-foundera/id1612042758',
+      icon: <AppleIcon />,
+    },
+    {
+      label: 'YouTube',
+      href: person?.youtubeUrl ?? 'https://www.youtube.com/playlist?list=PLo0qHIWsZ_rtmifaU1OohGiyUJ1p18n6b',
+      icon: <YouTubeIcon />,
+    },
+    {
+      label: 'TikTok',
+      href: person?.tiktokUrl ?? 'https://www.tiktok.com/@mentalita.foundera',
+      icon: <TikTokIcon />,
+    },
+  ]
+
   return (
     <div className="bg-ink py-6 px-[5%]">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-3">
         <span className="text-xs text-white/40 uppercase tracking-widest font-semibold mr-2">Počúvaj na</span>
         {platforms.map((p) => (
-          <a key={p.label} href={p.href}
+          <a key={p.label} href={p.href} target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-2 text-white/60 hover:text-gold text-sm font-medium px-4 py-2 rounded-lg border border-white/10 hover:border-gold transition-all">
             {p.icon}
             {p.label}

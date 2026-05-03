@@ -8,10 +8,16 @@ interface Props {
 }
 
 export function HeroSection({ person, latestEpisode }: Props) {
+  // CMS-editable text with safe fallbacks (used if a field is empty in Sanity)
+  const badgeText      = person.heroBadge        ?? 'Nová epizóda každých 14 dní'
+  const subheadline    = person.heroSubheadline  ?? 'Podcast, kde najlepší zakladatelia a lídri zdieľajú príbehy, zlyhania a stratégie, ktoré im pomohli budovať firmy, ktoré majú zmysel.'
+  const awardTitle     = person.heroAwardTitle   ?? 'TOP 3 biznisový podcast na Slovensku'
+  const awardSubtitle  = person.heroAwardSubtitle ?? '2024 – 2026'
+
   const stats = person.stats ?? [
-    { value: '100+', label: 'Epizód' },
-    { value: '50k',  label: 'Poslucháčov' },
-    { value: '#1',   label: 'Startup podcast' },
+    { value: '90+', label: 'Epizód' },
+    { value: '250 tis.', label: 'Poslucháčov' },
+    { value: '#1', label: 'Startup podcast' },
   ]
 
   return (
@@ -21,7 +27,7 @@ export function HeroSection({ person, latestEpisode }: Props) {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-gold-light text-gold-dark text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-7">
           <span className="w-1.5 h-1.5 rounded-full bg-gold-dark animate-pulse-dot" />
-          Nový epizód každý týždeň
+          {badgeText}
         </div>
 
         <h1 className="font-serif text-5xl lg:text-7xl leading-[1.05] tracking-tight text-ink mb-5">
@@ -31,8 +37,7 @@ export function HeroSection({ person, latestEpisode }: Props) {
         </h1>
 
         <p className="text-lg text-ink-muted leading-relaxed max-w-lg mb-10">
-          Podcast, kde najlepší zakladatelia a lídri zdieľajú príbehy, zlyhania a stratégie,
-          ktoré im pomohli budovať firmy, ktoré majú zmysel.
+          {subheadline}
         </p>
 
         <div className="flex flex-wrap gap-3 mb-12">
@@ -97,8 +102,8 @@ export function HeroSection({ person, latestEpisode }: Props) {
           <div className="absolute -top-4 -left-10 bg-white rounded-2xl px-4 py-3 shadow-xl flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gold-faint flex items-center justify-center text-lg shrink-0">🏆</div>
             <div>
-              <div className="text-xs font-bold text-ink leading-tight">Top Podcast 2024</div>
-              <div className="text-[11px] text-ink-muted mt-0.5">Business &amp; Founders — SK</div>
+              <div className="text-xs font-bold text-ink leading-tight">{awardTitle}</div>
+              <div className="text-[11px] text-ink-muted mt-0.5">{awardSubtitle}</div>
             </div>
           </div>
         </div>

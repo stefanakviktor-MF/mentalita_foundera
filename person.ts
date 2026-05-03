@@ -45,6 +45,39 @@ export const personSchema = defineType({
         },
       ],
     }),
+
+    // ─── Hero section editable text ───────────────────────────────
+    defineField({
+      name: 'heroBadge',
+      title: 'Hero · Badge text',
+      type: 'string',
+      description: 'Malý zlatý štítok nad nadpisom. Napr. "Nová epizóda každých 14 dní"',
+    }),
+    defineField({
+      name: 'heroSubheadline',
+      title: 'Hero · Podnadpis',
+      type: 'text',
+      rows: 3,
+      description: 'Krátky odsek pod hlavným nadpisom Mentalita Foundera.',
+    }),
+    defineField({
+      name: 'heroAwardTitle',
+      title: 'Hero · Award badge — riadok 1',
+      type: 'string',
+      description: 'Hlavný text na zlatej "ocenenie" plakete (napr. "TOP 3 biznisový podcast na Slovensku")',
+    }),
+    defineField({
+      name: 'heroAwardSubtitle',
+      title: 'Hero · Award badge — riadok 2',
+      type: 'string',
+      description: 'Druhý riadok plakety (napr. "2024 – 2026")',
+    }),
+
+    // ─── Podcast platform URLs (PlatformsStrip + Footer) ─────────
+    defineField({ name: 'spotifyUrl', title: 'Spotify URL', type: 'url' }),
+    defineField({ name: 'applePodcastsUrl', title: 'Apple Podcasts URL', type: 'url' }),
+    defineField({ name: 'youtubeUrl', title: 'YouTube URL', type: 'url' }),
+    defineField({ name: 'tiktokUrl', title: 'TikTok URL', type: 'url' }),
   ],
   preview: {
     select: { title: 'name', media: 'photo' },
